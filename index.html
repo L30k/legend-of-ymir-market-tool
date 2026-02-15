@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora de Lucro para comparar vendas em Diamantes e WEMIX">
+    <title>Calculadora de Lucro - yMir</title>
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-top">
+                    <h1 class="app-title">
+                        <span class="icon">💎</span>
+                        <span data-i18n="app.title">Calculadora de Lucro - yMir</span>
+                    </h1>
+                    <div class="language-selector">
+                        <label class="lang-switch">
+                            <input type="checkbox" id="langToggle" class="lang-checkbox">
+                            <span class="lang-slider">
+                                <span class="lang-option lang-pt">🇧🇷 PT</span>
+                                <span class="lang-option lang-en">🇺🇸 EN</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <p class="app-subtitle" data-i18n="app.subtitle">Compare lucros entre vendas em Diamantes e WEMIX</p>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="dashboard-grid">
+                <aside class="sidebar">
+                    <section class="config-card">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                <span class="card-icon">⚙️</span>
+                                <span data-i18n="config.title">Configurações</span>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <label for="taxaDiamante" class="input-label">
+                                    <span data-i18n="config.taxaDiamante">Taxa Diamantes</span>
+                                    <span class="input-suffix">%</span>
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="taxaDiamante" 
+                                    class="input-field"
+                                    value="23.49" 
+                                    step="0.01" 
+                                    min="0" 
+                                    max="100"
+                                >
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="valorDiamante" class="input-label">
+                                    <span data-i18n="config.valorDiamante">Valor por 1000 Diamantes</span>
+                                    <span class="input-suffix">R$</span>
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="valorDiamante" 
+                                    class="input-field"
+                                    value="70.00" 
+                                    step="0.01" 
+                                    min="0"
+                                >
+                            </div>
+                            
+                            <div class="divider"></div>
+                            
+                            <div class="input-group">
+                                <label for="taxaWemix" class="input-label">
+                                    <span data-i18n="config.taxaWemix">Taxa WEMIX</span>
+                                    <span class="input-suffix">%</span>
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="taxaWemix" 
+                                    class="input-field"
+                                    value="18.49" 
+                                    step="0.01" 
+                                    min="0" 
+                                    max="100"
+                                >
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="valorWemix" class="input-label">
+                                    <span data-i18n="config.valorWemix">Valor por WEMIX</span>
+                                    <span class="input-suffix">R$</span>
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="valorWemix" 
+                                    class="input-field"
+                                    value="0.00" 
+                                    step="0.01" 
+                                    min="0"
+                                >
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="venda-card">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                <span class="card-icon">💰</span>
+                                <span data-i18n="venda.title">Valores de Venda</span>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <label for="vendaDiamante" class="input-label">
+                                    <span data-i18n="venda.diamante">Venda em Diamantes</span>
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="vendaDiamante" 
+                                    class="input-field input-large"
+                                    value="0" 
+                                    step="1" 
+                                    min="0"
+                                >
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="vendaWemix" class="input-label">
+                                    <span data-i18n="venda.wemix">Venda em WEMIX</span>
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="vendaWemix" 
+                                    class="input-field input-large"
+                                    value="0" 
+                                    step="0.01" 
+                                    min="0"
+                                >
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+
+                <section class="results-area">
+                    <div class="results-grid" id="results">
+                        <div class="result-card result-card-diamantes">
+                            <div class="result-card-header">
+                                <div class="result-icon">💎</div>
+                                <h3 class="result-card-title" data-i18n="result.diamantes">Diamantes</h3>
+                            </div>
+                            <div class="result-card-body">
+                                <div class="metric">
+                                    <div class="metric-label" data-i18n="result.diamantesLiquidos">Diamantes Líquidos</div>
+                                    <div class="metric-value value-diamantes" id="diamantesLiquidos">0.00</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label" data-i18n="result.valorReal">Valor em Real</div>
+                                    <div class="metric-value metric-value-large value-diamantes">
+                                        R$ <span id="diamantesReal">0.00</span>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label" data-i18n="result.taxaAplicada">Taxa Aplicada</div>
+                                    <div class="metric-value">
+                                        <span id="diamantesTaxa">0.00</span>%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-card result-card-wemix">
+                            <div class="result-card-header">
+                                <div class="result-icon">🪙</div>
+                                <h3 class="result-card-title" data-i18n="result.wemix">WEMIX</h3>
+                            </div>
+                            <div class="result-card-body">
+                                <div class="metric">
+                                    <div class="metric-label" data-i18n="result.wemixLiquidos">WEMIX Líquidos</div>
+                                    <div class="metric-value value-wemix" id="wemixLiquidos">0.00</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label" data-i18n="result.valorReal">Valor em Real</div>
+                                    <div class="metric-value metric-value-large value-wemix">
+                                        R$ <span id="wemixReal">0.00</span>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label" data-i18n="result.taxaAplicada">Taxa Aplicada</div>
+                                    <div class="metric-value">
+                                        <span id="wemixTaxa">0.00</span>%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card" id="comparison">
+                        <div class="comparison-content">
+                            <div class="comparison-icon">📊</div>
+                            <div class="comparison-text" data-i18n="comparison.empty">Insira valores de venda para ver a comparação</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+        <div class="footer-content">
+            <button class="footer-link" id="btnComoFunciona">
+                <span class="footer-icon">📖</span>
+                <span data-i18n="footer.comoFunciona">Como funciona o cálculo</span>
+            </button>
+            <a href="https://github.com/L30k" target="_blank" rel="noopener noreferrer" class="footer-link">
+                <span class="footer-icon">🔗</span>
+                <span data-i18n="footer.github">GitHub</span>
+            </a>
+        </div>
+        </footer>
+    </div>
+
+    <div class="modal-overlay" id="modalExplicacao">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" data-i18n="modal.title">Como funciona o cálculo</h2>
+                <button class="modal-close" id="btnFecharModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="explicacao-secao">
+                    <h3 class="explicacao-titulo">💎 <span data-i18n="modal.diamantes.title">Cálculo para Diamantes</span></h3>
+                    <ol class="explicacao-lista">
+                        <li><span data-i18n="modal.diamantes.passo1">Primeiro, aplicamos a taxa de desconto:</span>
+                            <div class="formula" data-i18n="modal.diamantes.formula1">Diamantes Líquidos = Valor de Venda × (1 - Taxa ÷ 100)</div>
+                        </li>
+                        <li><span data-i18n="modal.diamantes.passo2">Depois, convertemos para reais:</span>
+                            <div class="formula" data-i18n="modal.diamantes.formula2">Valor em R$ = (Diamantes Líquidos ÷ 1000) × Valor por 1000 Diamantes</div>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="explicacao-secao">
+                    <h3 class="explicacao-titulo">🪙 <span data-i18n="modal.wemix.title">Cálculo para WEMIX</span></h3>
+                    <ol class="explicacao-lista">
+                        <li><span data-i18n="modal.wemix.passo1">Primeiro, aplicamos a taxa de desconto:</span>
+                            <div class="formula" data-i18n="modal.wemix.formula1">WEMIX Líquidos = Valor de Venda × (1 - Taxa ÷ 100)</div>
+                        </li>
+                        <li><span data-i18n="modal.wemix.passo2">Depois, convertemos para reais:</span>
+                            <div class="formula" data-i18n="modal.wemix.formula2">Valor em R$ = WEMIX Líquidos × Valor por WEMIX</div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="explicacao-secao">
+                    <h3 class="explicacao-titulo">📊 <span data-i18n="modal.comparacao.title">Comparação</span></h3>
+                    <p class="explicacao-texto" data-i18n="modal.comparacao.texto">
+                        A calculadora compara os valores em reais de ambas as opções e mostra qual é mais vantajosa, 
+                        exibindo também a diferença entre elas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/init.js"></script>
+    <script src="assets/js/calculadora.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/footer.js"></script>
+</body>
+</html>
