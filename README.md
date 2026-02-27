@@ -1,90 +1,83 @@
-# Calculadora de Lucro - Versão Web
+# Profit Calculator
 
-Versão web da calculadora de lucro para comparar vendas em Diamantes e WEMIX.
+Web version of the profit calculator to compare sales using Diamonds and WEMIX.
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 src/
-├── index.html                 # Página principal HTML
+├── index.html                 # Main HTML page
 ├── assets/
 │   ├── css/
-│   │   └── styles.css        # Estilos CSS da aplicação
+│   │   └── styles.css        # Application CSS styles
 │   └── js/
-│       ├── calculadora.js    # Classe de lógica de cálculo
-│       ├── main.js           # Lógica de interface e eventos
-│       ├── footer.js         # Controle do rodapé e modal de explicação
-│       ├── i18n.js           # Sistema de internacionalização
-│       └── init.js           # Inicialização do i18n e seletor de idioma
-└── README.md                  # Este arquivo
+│       ├── calculadora.js    # Calculation logic class
+│       ├── main.js           # Interface logic and events
+│       ├── footer.js         # Footer and explanation modal control
+│       ├── i18n.js           # Internationalization system
+│       └── init.js           # i18n initialization and language selector
+└── README.md                  # This file
 ```
 
-## Arquitetura
+## Architecture
 
 ### HTML (`index.html`)
-- Estrutura semântica da página
-- Separação clara de seções (configurações, vendas, resultados)
-- Acessibilidade com atributos ARIA
+- Semantic page structure
+- Clear separation of sections (settings, sales, results)
+- Accessibility with ARIA attributes
 
 ### CSS (`assets/css/styles.css`)
-- Estilos organizados por componentes
-- Design responsivo para mobile
-- Variáveis de cores para fácil manutenção
+- Styles organized by components
+- Responsive design for mobile devices
+- Color variables for easy maintenance
 
 ### JavaScript
 
 #### `calculadora.js`
-Classe `CalculadoraLucro` responsável por:
-- Armazenar configurações (taxas e valores de conversão)
-- Calcular lucro líquido em diamantes
-- Calcular lucro líquido em WEMIX
-- Comparar ambas as opções e determinar a melhor
+`CalculadoraLucro` class responsible for:
+- Storing settings (fees and conversion rates)
+- Calculating net profit in diamonds
+- Calculating net profit in WEMIX
+- Comparing both options and determining the best one
 
 #### `main.js`
-Lógica de interface responsável por:
-- Gerenciar eventos dos inputs
-- Atualizar a calculadora com novos valores
-- Renderizar resultados na tela
-- Exibir comparação entre opções
+Interface logic responsible for:
+- Managing input events
+- Updating the calculator with new values
+- Rendering results on the screen
+- Displaying comparison between options
 
 #### `footer.js`
-Controle do rodapé e modal responsável por:
-- Gerenciar abertura e fechamento do modal de explicação
-- Controlar eventos do rodapé (botão de explicação e link do GitHub)
-- Fechar modal ao pressionar ESC ou clicar fora
+Footer and modal control responsible for:
+- Managing opening and closing of the explanation modal
+- Handling footer events (explanation button and GitHub link)
+- Closing the modal when pressing ESC or clicking outside
 
 #### `i18n.js`
-Sistema de internacionalização responsável por:
-- Gerenciar traduções em português e inglês
-- Atualizar textos da interface dinamicamente
-- Persistir preferência de idioma no localStorage
+Internationalization system responsible for:
+- Managing translations in Portuguese and English
+- Dynamically updating interface texts
+- Persisting language preference in localStorage
 
 #### `init.js`
-Inicialização do sistema responsável por:
-- Carregar traduções do idioma salvo
-- Configurar seletor de idioma (switch)
-- Atualizar interface ao trocar idioma
+System initialization responsible for:
+- Loading saved language translations
+- Configuring the language selector (switch)
+- Updating the interface when switching languages
 
-## Como Funciona
+## How It Works
 
-1. **Configurações**: Usuário define taxas e valores de conversão
-2. **Valores de Venda**: Usuário insere valores a serem vendidos
-3. **Cálculo Automático**: A cada mudança, os cálculos são atualizados
-4. **Resultados**: Exibe lucros líquidos e valores em real
-5. **Comparação**: Mostra qual opção é mais vantajosa
+1. **Settings**: The user defines fees and conversion values
+2. **Sale Values**: The user enters the values to be sold
+3. **Automatic Calculation**: Calculations are updated on every change
+4. **Results**: Displays net profits and values in local currency
+5. **Comparison**: Shows which option is more advantageous
 
-## Funcionalidades
+## Features
 
-- **Cálculo Automático**: Atualização em tempo real conforme os valores são inseridos
-- **Comparação Visual**: Destaque da melhor opção com cores diferentes
-- **Modal de Explicação**: Botão no rodapé que explica como funciona o cálculo
-- **Link para GitHub**: Acesso direto ao perfil do desenvolvedor
-- **Internacionalização (i18n)**: Suporte a português e inglês com switch de idioma
-- **Design Responsivo**: Funciona perfeitamente em dispositivos móveis
-
-## Publicação no GitHub Pages
-
-1. Faça commit dos arquivos na pasta `src/`
-2. Configure GitHub Pages para apontar para a pasta `src/`
-3. Ou mova os arquivos para a raiz do repositório
-
+- **Automatic Calculation**: Real-time updates as values are entered
+- **Visual Comparison**: Highlights the best option with different colors
+- **Explanation Modal**: Footer button explaining how the calculation works
+- **GitHub Link**: Direct access to the developer’s profile
+- **Internationalization (i18n)**: Support for Portuguese and English with a language switch
+- **Responsive Design**: Works perfectly on mobile devices
